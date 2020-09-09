@@ -1,0 +1,29 @@
+- name: github
+  url: https://github.com/DWshuo
+
+- name: linkedin
+  url: https://linkedin.com/in/username
+
+- name: blog
+  url: https://dwshuo.github.io
+
+- name: twitter
+  url: 
+
+- name: facebook
+  url:
+
+- name: instagram
+  url:
+
+- name: dribbble
+  url:
+
+- name: producthunt
+  url:
+
+- name: goodreads
+  url:
+
+- name: xing
+  url:

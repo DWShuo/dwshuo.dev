@@ -1,0 +1,54 @@
+- name: wardrobeOS
+  url: https://github.com
+  description: "Android application for wardrobe organization and outfit recommendation.
+
+  
+  \u26AB Suggestion algorithm takes into account of seasonal colors, daily weather, an overall outfit color coordination
+  
+  \u26AB Barcode(UPC) scanner functionality allows easy entry of newly purchased items. "
+  status: live
+  tags:
+    - Java
+    - Andriod
+  icon: github
+  image: images/project.jpg
+  iconURL: https://github.com/DWShuo/wardrobeOS
+
+- name: Parts of speech tagger
+  url: https://github.com
+  description: "Parts of speech tagger with Hidden Markov Model.
+
+
+  \u26AB Parts of speech tagger for both English and Spanish languages.
+  
+  \u26AB Hidden Markov Model with starting, transition, emission probabilities.
+  
+  \u26AB Stemming algorithm for handling unknow words."
+  status: live
+  tags:
+    - Python
+    - Natural language processing
+  icon: github
+  iconURL: https://github.com/DWShuo/posTagger
+
+- name: Pokémon RPI
+  url: https://github.com
+  description: "Fundamentally based on the 2nd generation Pokémon engine.
+
+  
+  \u26AB Adapted maps and storyline for the RPI campus and culture. Improved game mechanics and playability.
+  
+  \u26AB Complex battle engine that makes decisions based on peripheral systems.
+  
+  \u26AB Animation Engine capable of handling multiple ongoing animations quickly and efficiently."
+  status: live
+  tags:
+    - Java
+  icon: github
+  image: images/project.jpg
+  iconURL: https://github.com/DWShuo/pkmnrpi
+
+
+    
+    
+    

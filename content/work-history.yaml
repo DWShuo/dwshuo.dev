@@ -1,0 +1,18 @@
+- company: BD (Becton Dickinson)
+  position: Embedded Software Intern
+  period: September 2015 - July 2016
+  url: https://www.bd.com/en-us
+  description: "
+  \u26AB Worked on Alaris infusion modules next generation hardware/software upgrades, WIFI capability enhancement.
+  
+  \u26AB Designed and implemented testing automation software for the Alaris Infusion modules. Abstraction allowed non-engineers to create test cases on the fly."
+
+- company: Carefusion
+  position: Software Engineer Intern 
+  period: June 2015 - September 2015
+  description: "
+  \u26AB Designed and implemented model to predict project deadlines. 
+
+  \u26AB Models mines project description database and assign keywords wth weights. 
+  
+  \u26AB Model predicts with 82% accuracy (10 fold cross validation)"
