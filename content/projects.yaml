@@ -3,16 +3,16 @@
   description: "Given a set of images, program determines if they are of the same object/scene and creates a montage/panoramic by stitching the images together.
 
   
-  \u26AB Extracts keypoints using SIFT and constructs K-D tree for KNN key point matching   
+  \u26AB Extracts keypoints using SIFT and constructs K-D tree for KNN key point matching.   
   
-  \u26AB Fundamental matrix estimation and homography estimation are use to determine alignment of images for proper stitching"
+  \u26AB Fundamental matrix estimation and homography estimation are use to determine alignment of images for proper stitching."
   status: live
   tags:
     - Python
     - Computer Vision
     - OpenCV
   icon: github
-  image: images/project.jpg
+  image: images/is.jpg
   iconURL: https://github.com/DWShuo/wardrobeOS
 
 - name: wardrobeOS
@@ -20,7 +20,7 @@
   description: "Android application for wardrobe organization and outfit recommendation.
 
   
-  \u26AB Suggestion algorithm takes into account of seasonal colors, daily weather, an overall outfit color coordination
+  \u26AB Suggestion algorithm takes into account of seasonal colors, daily weather, an overall outfit color coordination.
   
   \u26AB Barcode(UPC) scanner functionality allows easy entry of newly purchased items. "
   status: live
@@ -28,21 +28,24 @@
     - Java
     - Andriod
   icon: github
-  image: images/project.jpg
+  image: images/wos.jpg
   iconURL: https://github.com/DWShuo/wardrobeOS
 
 - name: Content aware image resizing
   url: https://github.com
-  description: "Android application for wardrobe organization and outfit recommendation.
+  description: "Resize images while keeping main subject focused and undistorted
 
   
-  \u26AB Suggestion algorithm takes into account of seasonal colors, daily weather, an overall outfit color coordination
+  \u26AB Find low energy seams along the image and remove them until desired image size is reached.
   
-  \u26AB Barcode(UPC) scanner functionality allows easy entry of newly purchased items. "
+  \u26AB Same princples could be apply to add seams in order to increase image size. 
+
+  \u26AB Based on the 2007 Avidan and Shamir paper Seam carving for content aware image resizing"
   status: live
   tags:
-    - Java
-    - Andriod
+    - Python
+    - Computer Vision
+    - OpenCV
   icon: github
   image: images/project.jpg
   iconURL: https://github.com/DWShuo/wardrobeOS
@@ -78,5 +81,5 @@
   tags:
     - Java
   icon: github
-  image: images/project.jpg
+  image: images/prpi.jpg
   iconURL: https://github.com/DWShuo/pkmnrpi
