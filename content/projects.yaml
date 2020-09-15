@@ -31,7 +31,7 @@
   image: images/wos.jpg
   iconURL: https://github.com/DWShuo/wardrobeOS
 
-- name: Content aware image resizing
+- name: Content aware image resizing (seam carving)
   url: https://github.com
   description: "Resize images while keeping main subject focused and undistorted
 
@@ -47,7 +47,7 @@
     - Computer Vision
     - OpenCV
   icon: github
-  image: images/project.jpg
+  image: images/cair.png
   iconURL: https://github.com/DWShuo/wardrobeOS
 
 - name: Parts of speech tagger
