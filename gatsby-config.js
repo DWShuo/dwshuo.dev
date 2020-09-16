@@ -10,6 +10,15 @@ module.exports = {
       options: {
         showThemeLogo: false,
         theme: "warm-red",
+        basePath: "/",
+      },
+    },
+
+    {
+      resolve: `gatsby-theme-blog`,
+      options: {
+        basePath: `/blog`,
+        contentPath: `blog/posts`,
       },
     },
   ],
