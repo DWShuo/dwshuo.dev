@@ -1,3 +1,4 @@
-public/
-node_modules/
-.cache/
+blog/node_modules/
+main/node_modules/
+blog/.cache/
+main/.cache/
