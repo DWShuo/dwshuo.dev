@@ -4,7 +4,7 @@ date: "2018-10-26"
 description: "Beginners guide to kernel development"
 ---
 
-![Intro gif](./menuconfig.gif)
+<img src="./menuconfig.gif" alt="drawing" width="600"/>
 
 The goal of this particular post is to walk you through on how to setup up your 
 system for linux kernel development. Later on we will go more in depth on topics 
@@ -85,7 +85,7 @@ sudo vim .config
 find the line that reads ``CONFIG_MODULE_SIG_KEY =`` and remove everthing behind the
 equals sign on that line.
 
-![Arnold Meme](./sig_key.gif)
+<img src="./sig_key.gif" alt="drawing" width="600"/>
 
 One last thing before we run menuconfig, we need to streamline our config file
 ```
@@ -113,7 +113,7 @@ enable this setting with Y, save and exit. Bootup logo support is needed or else
 when grub tries to use ``Plymouth/quite/splash`` boot options you will get garbled 
 screens. 
 
-![Arnold Meme](./menuconfig.gif)
+<img src="./menuconfig.gif" alt="drawing" width="600"/>
 
 ## Building and installing the kernel
 Lets make some changes to our kernel, compile it and then install it. For now we 
@@ -143,7 +143,7 @@ which will create the initramfs and invoke update-grub all in one command.
 Congratulations!! you have now built and installed your very own kernel. Now we just
 need to reboot, and select the new kernel under "Advanced Options".
 
-![Arnold Meme](./demo.gif)
+<img src="./demo.gif" alt="drawing" width="600"/>
 
 Once Ubuntu has been booted you can check your kernel version by typing ``uname -r``
 into the terminal. you should see ``4.18.5-David`` or what ever you choose for your 

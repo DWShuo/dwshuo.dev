@@ -11,7 +11,7 @@ function buildMain {
 function buildSub {
   cd $OG_PWD/blog/
   echo building $PWD ...
-  gatsby build
+  gatsby build --prefix-paths
 }
 
 buildMain & buildSub &
