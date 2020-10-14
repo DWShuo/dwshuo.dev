@@ -150,6 +150,20 @@ later use, and display the relevant information on the main page of the App.
 
 ## Color & pattern coordination
 
+For Color and pattern coordination we defer to pre-established seasonal colors and general color theory.
+
+For Spring and Summer we go wtih bright and pastel colors. The following are some examples.
+
+![Spring and Summer palette](./summerpalette.png)
+
+For Fall we want to go with more earthy colors, such as the following.
+
+![Fall palette](./fallpalette.png)
+
+Lastly for Winter we want to go with desaturated colors, like the following.
+
+![Winter palette](./winterpalette.png)
+
 ## Suggestion engine
 
 
