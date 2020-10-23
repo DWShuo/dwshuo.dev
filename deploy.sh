@@ -20,5 +20,5 @@ wait #wait for build functions to return
 cd $OG_PWD
 mkdir -p $OG_PWD/main/public/blog/ && cp -r $OG_PWD/blog/public/* $OG_PWD/main/public/blog/
 
-cd $OG_PWD/main
-gatsby serve
+#cD $OG_PWD/main
+#gatsby serve
