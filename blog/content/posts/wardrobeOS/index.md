@@ -150,7 +150,7 @@ later use, and display the relevant information on the main page of the App.
 
 ## Color coordination and implementation
 
-For Color and pattern coordination we defer to pre-established seasonal colors and general color theory.
+For color and pattern coordination we defer to pre-established seasonal colors and general color theory.
 
 The Spring and Summer seasons is often associated with its colorfulness and thus we prefer bright and pastel colors. The following are some examples.
 
@@ -174,9 +174,15 @@ The three properties we want to utilize are complementray colors, analogous colo
 To implement this color coordination function we need to approximate our input color to the nearest color on our pre-determined list 
 (24 on the color wheel, and 15 from above). 
 
-imagine RGB as vectors residing in 3D space. Next we need 
+We can imagine RGB as vectors residing in 3D space, with Red on the x-axis Green on the y-axis and Blue on the z-axis.
 
 ![rgb space](./rgbspace.png)
+
+Then to calculate the distance between colors becomes as trival as applying the distance formula.
+
+![dist formula](./dist.png)
+
+Lastly all new items entered into the app has it's closest color calculated and stored as a attribute.
 
 ## Suggestion engine
 
