@@ -148,21 +148,35 @@ The API then responds with the following
 After parsing the returned information we can simply store it in a variable for 
 later use, and display the relevant information on the main page of the App. 
 
-## Color & pattern coordination
+## Color coordination and implementation
 
 For Color and pattern coordination we defer to pre-established seasonal colors and general color theory.
 
-For Spring and Summer we go wtih bright and pastel colors. The following are some examples.
+The Spring and Summer seasons is often associated with its colorfulness and thus we prefer bright and pastel colors. The following are some examples.
 
 ![Spring and Summer palette](./summerpalette.png)
 
-For Fall we want to go with more earthy colors, such as the following.
+For the Fall we want to go with more earthy colors, such as the following.
 
 ![Fall palette](./fallpalette.png)
 
-Lastly for Winter we want to go with desaturated colors, like the following.
+Lastly for Winter we want to go with neutral and desaturated colors, like the ones below.
 
 ![Winter palette](./winterpalette.png)
+
+To coordinate the colors of our outfit we need a set of rules/logic to dictate the pairings.
+Luckily we can use Isaac Newton's color wheel to help us. 
+
+The three properties we want to utilize are complementray colors, analogous colors and triadic colors. 
+
+![Color wheel pairings](./colorwheel.png)
+
+To implement this color coordination function we need to approximate our input color to the nearest color on our pre-determined list 
+(24 on the color wheel, and 15 from above). 
+
+imagine RGB as vectors residing in 3D space. Next we need 
+
+![rgb space](./rgbspace.png)
 
 ## Suggestion engine
 

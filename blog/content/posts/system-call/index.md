@@ -17,7 +17,7 @@ a little more intresting. I will propose a probelm and we will attempt to resolv
 it by implmenting our very own system call.
 
 In this problem, we have a basic server and client written in C, the code for both 
-can be <a href="https://github.com/DWShuo/posTagger/tree/master/data" target = "_blank">found here</a>.
+can be <a href="https://github.com/DWShuo/syscall-demo" target = "_blank">found here</a>.
 
 The server will attempt to send 5 messages to a connected client, while the client 
 displays those messages as they are received. 
