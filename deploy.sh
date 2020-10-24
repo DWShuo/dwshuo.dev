@@ -1,5 +1,4 @@
 #!/bin/bash
-# build and serve with blog using prefix-paths
 OG_PWD=$PWD
 
 function buildMain {
@@ -14,11 +13,12 @@ function buildSub {
   gatsby build --prefix-paths
 }
 
-buildMain & buildSub &
-wait #wait for build functions to return
+buildMain 
+buildSub
+#wait #wait for build functions to return
 
 cd $OG_PWD
 mkdir -p $OG_PWD/main/public/blog/ && cp -r $OG_PWD/blog/public/* $OG_PWD/main/public/blog/
 
-#cD $OG_PWD/main
-#gatsby serve
+cd $OG_PWD/main
+gatsby serve
