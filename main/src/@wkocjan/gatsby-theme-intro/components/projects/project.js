@@ -32,7 +32,7 @@ const Project = props => {
           {tags && <ProjectTags tags={tags} />}
         </ul>
         
-          <a href={iconURL}> {icon && <ProjectIcon icon={icon} />} </a>
+          <a href={iconURL} target="_blank"> {icon && <ProjectIcon icon={icon} />} </a>
       </div>
     </div>
   )

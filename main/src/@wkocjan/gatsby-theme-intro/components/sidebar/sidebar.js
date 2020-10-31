@@ -27,9 +27,14 @@ const Sidebar = ({ profile, social }) => (
       </div>
 
       <div className="pt-8 pb-12 lg:py-8">
-        <h5 className="font-header font-semibold text-front text-sm uppercase mb-3">
+        <h5 className="font-header font-semibold text-front text-lg uppercase mb-1">
           Connect
         </h5>
+        
+        <h5 className="font-header font-semibold text-front text-sm mb-3">
+         Email: dwshuo@gmail.com 
+        </h5>
+
         <SocialLinks social={social} />
       </div>
     </div>

@@ -13,7 +13,7 @@
     - OpenCV
   icon: github
   image: images/is.jpg
-  iconURL: https://github.com/DWShuo/wardrobeOS
+  iconURL: https://github.com/DWShuo/image-stitching
 
 - name: wardrobeOS
   url: https://github.com
@@ -48,7 +48,7 @@
     - OpenCV
   icon: github
   image: images/cair.png
-  iconURL: https://github.com/DWShuo/wardrobeOS
+  iconURL: https://github.com/DWShuo/Content-aware-image-resizing
 
 - name: Parts of speech tagger
   url: https://github.com

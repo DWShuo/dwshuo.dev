@@ -14,7 +14,7 @@ const ContactForm = ({ email }) => {
       </h5>
 
       <form
-        action={`https://formspree.io/${email}`}
+        action={`https://formspree.io/f/mayljojg`}
         className="flex flex-wrap"
         method="post"
       >
