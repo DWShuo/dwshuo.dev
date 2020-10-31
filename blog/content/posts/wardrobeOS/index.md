@@ -110,7 +110,6 @@ a list of cloth objects.
 
 The final product would look something lis this
 
-![bar scan gif](./bar-scan.gif)
 <img src="./bar-scan.gif" alt="drawing" width="600"/>
 
 ## Weather Data

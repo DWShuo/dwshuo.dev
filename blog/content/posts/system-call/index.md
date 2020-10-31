@@ -170,6 +170,7 @@ syscall function handles the syscall interrupt for us, such that we dont have to
 trigger it manually.
 
 <img src="fixed.gif" alt="drawing" width="600"/>
+
 As you can see our system call fixed the problem we had orginally proposed. 
 Congratulations now you know how to write your own system calls. 
 
