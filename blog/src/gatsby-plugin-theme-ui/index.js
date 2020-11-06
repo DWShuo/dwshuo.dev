@@ -15,3 +15,10 @@ export default {
         heading: blueGray,
     },
 }
+
+//text:'#ebdbb2',      // grub-box cream white
+//background:'#282828',//gruv-box dark
+//primary:'#b8bb26',   //green
+//secondary:'#1d2021', //highlighted text color
+//highlight:'#fe8019', //text highlight
+//muted:'#fe8019', //bottom line
