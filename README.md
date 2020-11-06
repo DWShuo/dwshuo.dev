@@ -1,5 +1,5 @@
 ## Install theme & dependencies
-```git clone repo```
+```git clone https://github.com/DWShuo/dwshuoWebsite.git```
 
 ```chmod +x ./deploy.sh```
 
