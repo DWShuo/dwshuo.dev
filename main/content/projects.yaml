@@ -1,11 +1,11 @@
 - name: Image stitching (panoramic) 
-  url: https://github.com
+  url: https://dwshuo.dev/blog/
   description: "Given a set of images, program determines if they are of the same object/scene and creates a montage/panoramic by stitching the images together.
 
   
-  \u26AB Extracts keypoints using SIFT and constructs K-D tree for KNN key point matching.   
+  \u25CF Extracts keypoints using SIFT and constructs K-D tree for KNN key point matching.   
   
-  \u26AB Fundamental matrix estimation and homography estimation are use to determine alignment of images for proper stitching."
+  \u25CF Fundamental matrix estimation and homography estimation are use to determine alignment of images for proper stitching."
   status: live
   tags:
     - Python
@@ -16,13 +16,13 @@
   iconURL: https://github.com/DWShuo/image-stitching
 
 - name: wardrobeOS
-  url: https://github.com
+  url: https://dwshuo.dev/blog/wardrobeOS/
   description: "Android application for wardrobe organization and outfit recommendation.
 
   
-  \u26AB Suggestion algorithm takes into account of seasonal colors, daily weather, an overall outfit color coordination.
+  \u25CF Suggestion algorithm takes into account of seasonal colors, daily weather, an overall outfit color coordination.
   
-  \u26AB Barcode(UPC) scanner functionality allows easy entry of newly purchased items. "
+  \u25CF Barcode(UPC) scanner functionality allows easy entry of newly purchased items. "
   status: live
   tags:
     - Java
@@ -32,15 +32,15 @@
   iconURL: https://github.com/DWShuo/wardrobeOS
 
 - name: Content aware image resizing (seam carving)
-  url: https://github.com
+  url: https://dwshuo.dev/blog/seam-carving/
   description: "Resize images while keeping main subject focused and undistorted
 
   
-  \u26AB Find low energy seams along the image and remove them until desired image size is reached.
+  \u25CF Find low energy seams along the image and remove them until desired image size is reached.
   
-  \u26AB Same princples could be apply to add seams in order to increase image size. 
+  \u25CF Same princples could be apply to add seams in order to increase image size. 
 
-  \u26AB Based on the 2007 Avidan and Shamir paper Seam carving for content aware image resizing"
+  \u25CF Based on the 2007 Avidan and Shamir paper Seam carving for content aware image resizing"
   status: live
   tags:
     - Python
@@ -51,15 +51,15 @@
   iconURL: https://github.com/DWShuo/Content-aware-image-resizing
 
 - name: Parts of speech tagger
-  url: https://github.com
+  url: https://dwshuo.dev/blog/parts-of-speech-tagger/
   description: "Parts of speech tagger with Hidden Markov Model.
 
 
-  \u26AB Parts of speech tagger for both English and Spanish languages.
+  \u25CF Parts of speech tagger for both English and Spanish languages.
   
-  \u26AB Hidden Markov Model with starting, transition, emission probabilities.
+  \u25CF Hidden Markov Model with starting, transition, emission probabilities.
   
-  \u26AB Stemming algorithm for handling unknow words."
+  \u25CF Stemming algorithm for handling unknow words."
   status: live
   tags:
     - Python
@@ -68,15 +68,15 @@
   iconURL: https://github.com/DWShuo/posTagger
 
 - name: Pokémon RPI
-  url: https://github.com
+  url: https://dwshuo.dev/blog/pokemon-rpi/
   description: "Fundamentally based on the 2nd generation Pokémon engine.
 
   
-  \u26AB Adapted maps and storyline for the RPI campus and culture. Improved game mechanics and playability.
+  \u25CF Adapted maps and storyline for the RPI campus and culture. Improved game mechanics and playability.
   
-  \u26AB Complex battle engine that makes decisions based on peripheral systems.
+  \u25CF Complex battle engine that makes decisions based on peripheral systems.
   
-  \u26AB Animation Engine capable of handling multiple ongoing animations quickly and efficiently."
+  \u25CF Animation Engine capable of handling multiple ongoing animations quickly and efficiently."
   status: live
   tags:
     - Java

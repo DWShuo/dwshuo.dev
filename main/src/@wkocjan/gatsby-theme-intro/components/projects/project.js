@@ -15,17 +15,27 @@ const Project = props => {
         </div>
       )}
       <div className="lg:flex-1">
-        <h4 className="font-bold">{name}</h4>
-        {url && (
-          <a
-            className="text-front underline hover:opacity-75 transition-opacity duration-150"
-            href={url}
-            rel="noreferrer noopener"
-            target="_blank"
-          >
-            {url}
-          </a>
-        )}
+        <h4 className="font-bold">
+          {url && (
+            <a className="text-front underline hover:opacity-75 transition-opacity duration-150"
+              href={url}
+              rel="noreferrer noopener"
+              target="_blank"
+            >
+              {name}
+            </a>
+          )}
+        </h4>
+        {url && ( 
+            <a className="text-front underline hover:opacity-75 transition-opacity duration-150"
+              href={url}
+              rel="noreferrer noopener"
+              target="_blank"
+            >
+              {url}
+            </a>
+          )}
+
         <p className="w-full py-4 whitespace-pre-wrap">{description}</p>
         <ul className="pr-2">
           {status && <ProjectStatus status={status} />}
