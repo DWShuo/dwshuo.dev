@@ -19,7 +19,7 @@ subjects of the image.
 
 ## Content-Aware Image Resizing
 
-In 2007 a paper was published titled "Seam Carving for Content-Aware Image Resizing", which suggest
+In 2007 a paper titled "Seam Carving for Content-Aware Image Resizing" was published, which suggested
 resizing along seams of low energy. A vertical seam is defined in this case as one pixel per row and 
 each pixel being 8-connected (pixels in adjacent rows differ by at most one column).
 
@@ -61,9 +61,17 @@ The optimal vertical seam to be removed is thus the seam which minimizes this en
 
 ![optimal energy seam](./min-seam.png)
 
-Given the exponential number of potential seams, a brute force solution is not optimal.
-Looking at this a bit further we can see that this is a classic dynamic programming probelm,
-which will allow use to solve for the minimal seam at linear time.
+Given the exponential number of potential seams, a brute force solution is not desirable.
+Examining the problem a bit further we can see that this is a classic dynamic programming problem,
+which would allow use to solve for the minimal seam at linear time.
+
+This dynamic programming problem can be defined as the following, where ``W[i,j]`` is the seam cost
+function at each pixel.
+
+![optimal energy seam](./dyn-prog.png)
+
+Below is the dynamic programming code, note how we set energy of the left and right edges to 1 million,
+this is done to prevent the seams from going out of bounds.
 
 ```python
 def min_helper(left,right,center):
@@ -80,9 +88,7 @@ def cumulative_energy(img_energy):
     for i in range(1, row):
         cumulative_energy[i-1,0] = 1e6 #set leftmost and right most col to 1mill
         cumulative_energy[i-1,-1] = 1e6
-        #split into left right and center 
-        left = cumulative_energy[i-1, :-2]
-        right = cumulative_energy[i-1, 2:]
+        #split into left right and center left = cumulative_energy[i-1, :-2] right = cumulative_energy[i-1, 2:]
         center = cumulative_energy[i-1, 1:-1]
         mins = min_helper(left,right,center) #call min helper returns array of mins
         cumulative_energy[i,:] = img_energy[i,:] #set self energy value
@@ -92,4 +98,45 @@ def cumulative_energy(img_energy):
         cumulative_energy[i,-1] = 1e6
     return cumulative_energy
 ```
+Once we have calculated ``W``, we need to back trace to find the actual path of the seam. To do this 
+we first find the column in the last row with the minimum cost, this becomes our end point of the seam.
+From this point we trace back one row at a time picking the minumum value all the way to the top.
 
+This is defiend by the following.
+
+![back trace](./backtrk.png)
+
+The following is the python code snippit for seam back tracing.
+```python
+def seam_backtrace(cumlative_energy):
+    row, col = cumlative_energy.shape[:2]
+    seam = []
+    prev_pos = 0
+    for i in range(row-1, -1, -1):#need to iterate backwards to trace down path
+        cur_row = cumlative_energy[i,:]#the row we are looking at currently
+        if i == row -1: #if last row, then argmin is our starting point
+            prev_pos = np.argmin(cur_row)
+            seam.append([prev_pos, i])
+        else:
+            if(prev_pos - 1 < 0):
+                left = 1e6
+            else:
+                left = cur_row[prev_pos - 1]
+            if(prev_pos + 1 > col):
+                right = 1e6
+            else:
+                right = cur_row[prev_pos + 1]
+            middle = cur_row[prev_pos]
+            prev_pos = prev_pos + np.argmin([left, middle, right]) - 1
+            seam.append([prev_pos, i])
+    #little clean up 
+    seam = np.asarray(seam)#set as np array
+    seam = seam[::-1]#reverse the array
+    return seam
+```
+## Results
+The following are the results of seam carving resizing and simple resizing shown side by side.
+
+![snow final](./snow-sbs.png)
+
+![lib final](./lib-sbs.png)
