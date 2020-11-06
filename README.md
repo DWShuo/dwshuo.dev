@@ -1,7 +1,9 @@
-## Installation
-1. ``git clone repo``
-2. ``chmod +x ./deploy.sh``
-3. ``./deploy.sh``
+## Install theme & dependencies
+```git clone repo```
+
+```chmod +x ./deploy.sh```
+
+```./deploy.sh```
 
 ## TODO list
 1. add resume download
