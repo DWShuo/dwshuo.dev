@@ -6,7 +6,7 @@ export default function Bio() {
     <>
       Hi, my name is David.
       <br />
-      This is my blog where i write about my projects and things that intrest me.
+      This is my blog where I write about my projects and things that interest me.
     </>
   )
 }
