@@ -36,6 +36,15 @@ const Sidebar = ({ profile, social }) => (
         </h5>
 
         <SocialLinks social={social} />
+        
+        <div className="pt-8 lg:py-5">
+          <button class="bg-red-600 hover:bg-red-400 text-white py-2 px-5 rounded inline-flex items-center">
+            <svg class="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 451.1 451.1">
+            <path d="M226 354l145-145-49-48-64 65V0h-65v226l-64-65-48 48zM0 387h451v64H0z"/></svg>            
+            <span className="font-header font-bold text-l px-1 text-white"> Resume </span>
+          </button>
+        </div>
+
       </div>
     </div>
   </aside>
@@ -47,3 +56,4 @@ Sidebar.propTypes = {
 }
 
 export default Sidebar
+
