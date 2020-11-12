@@ -12,7 +12,7 @@ export default props => {
 
             <a className="menu-item Header__menu__item" href="/blog"> Blog </a>
             
-            <a className="menu-item Header__menu__item" href="/resume"> Resume </a>
+            <a className="menu-item Header__menu__item" href="/resume.pdf" target="_blank"> Resume </a>
 
             <a className="menu-item Header__menu__item" href="https://github.com/DWShuo"> Github </a>
         </Menu>
