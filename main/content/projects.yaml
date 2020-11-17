@@ -1,5 +1,5 @@
 - name: Image stitching (panoramic) 
-  url: https://dwshuo.dev/blog/
+  url: https://dwshuo.dev/blog/image-stitching/
   description: "Given a set of images, program determines if they are of the same object/scene and creates a montage/panoramic by stitching the images together.
 
   
