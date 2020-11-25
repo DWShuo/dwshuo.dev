@@ -41,9 +41,8 @@ compared with its 8-connected neighbours, 9 pixels from above and 9 pixels from 
 
 #### Keypoint localization
 
-For each keypoint candidate position interpolation is done using Taylor expansion of
-the the Difference of Gaussian scale space function with the keypoint as its origin,
-we refer to this as D(x).
+For each keypoint candidate position, interpolation is done using the taylor expansion of
+the Difference of Gaussian function with the keypoint as its origin, we refer to this as D(x).
 If the intensity at the candidate extrema is less than the 0.03 threshold value
 stated in the David Lowe paper, it is rejected.
 
@@ -65,10 +64,10 @@ threshold value is defined as 10.
 To achieve rotation invariance we must assign the keypoint with a orientation. We
 first construct a histogram with 36 bins which covers 360 degrees around our
 keypoint, next we calculate the gradient magnitude and direction of the neighboring
-pixels and add them to the histogram.
+pixels(8-connected) and add them to the histogram.
 
 The orientations within 80% of the highest peaks are assigned to the keypoint. For each
-additional orientation assigned additional keypoints are created having the same position 
+additional orientation assigned, new keypoints are created having the same position 
 and scale as the original keypoint.
 
 #### Keypoint descriptor
@@ -76,14 +75,14 @@ and scale as the original keypoint.
 Now that we have a set of keypoints that are both scale and orientation invariant.
 We need to generate unique "signatures" for these keypoints. To produce this
 signature we take a 16x16 pixel block around the keypoint. This block is then equally
-divided into 4x4 sub-blocks and for each of these 4x4 sub-blocks a 8 bin oreintation
-histogram is creaded.
+divided into 4x4 sub-blocks and for each of these 4x4 sub-blocks a 8 bin orientation
+histogram is created.
 
 In total this gives us 128 values, which is represented as a vector to form the
 unique keypoint descriptor.
 
 The following is an illustration on how keypoint descriptor works. Note that instead
-of a 16x16 block, the image shows a 8x8 block divided into 4x4 sub-blocks.
+of a 16x16 block, the image shows a zoomed in 8x8 block divided into 4x4 sub-blocks.
 
 ![keypoint descriptor](./keypoint-desc.png)
 
@@ -94,12 +93,11 @@ There are two common methods for feature matching, brute force matching and FLAN
 Brute force matching performs an exhaustive search and guarantees the best match,
 but this comes at the cost of being extremely slow.
 
-FLANN or "Fast Library for Approximate Nearest Neighbors" like its name suggest is
-fast but does not gaurntee the best match instead provides the approximate best
-match. To achive its speed FLANN stores the key points in a 
-[k-d tree](https://en.wikipedia.org/wiki/K-d_tree), which is a special cases of 
-binary space partitioning trees. Once all the key points are inserted into the k-d 
-tree, k-nearest neighbors algorithm is ran with k set to 2.
+FLANN or "Fast Library for Approximate Nearest Neighbors" is much faster but does 
+not gaurntee the best match,but instead provides the approximate best match. 
+To achive its speed FLANN stores the key points in a [k-d tree](https://en.wikipedia.org/wiki/K-d_tree), 
+which is a special cases of a binary space partitioning trees. Once all the key 
+points are inserted into the k-d tree, k-nearest neighbors algorithm is ran with k set to 2.
 
 This returns the best match and second best match, their similarities are then
 compared via a ratio test. If the result is a high ratio this would suggest that the
@@ -148,35 +146,50 @@ change was pushed out. Second solution is to compile OpenCV yourself with the
 ``OPENCV_ENABLE_NONFREE=1`` enabled. You can read more about it here [OpenCV #126](https://github.com/skvark/opencv-python/issues/126).
 
 According to the [SIFT patent](https://patents.google.com/patent/US6711293B1/en) it
-is set to expire on 03/06/2020. A [Github issue](https://github.com/opencv/opencv/issues/16736) has already been opened to move SIFT back into the main repository.
+is set to expire on 03/06/2020. A [Github issue](https://github.com/opencv/opencv/issues/16736) 
+has already been opened to move SIFT back into the main repository.
 
 ## Fundamental matrix
 
-The next step in our process is to calculate the fundamental matrix. To understand 
-what the fundamental matrix is and why its important, we need to take a look at 
-epipolar geometry. 
+The next step in our process is to calculate the fundamental matrix and determine
+if the images have sufficient matches to be recognized as originating fromt the same
+scene. 
+
+To understand what the fundamental matrix is and why its important, we need to take a 
+look at epipolar geometry. 
 
 ![Epipolar geometry](./epipolar.png)
 
 The image above depicts a typical stereo vision scenario, where two optical 
-sensors(``O1`` and ``O2``) are observing an object ``P``, these three points together
-forms the epipolar plane(grey area). The projection of ``P`` on to each image planes
-is represented as ``p`` and ``p'``.
+sensors(**O1** and **O2**) are observing an object **P**, these three points together
+forms the epipolar plane(grey area). The projection of **P** on to each image planes
+is represented as **p** and **p'**.
 
 The orange line connecting the two image sensors is referred to as the baseline, the
 locations where the baseline intersects the two image planes are know as the 
-epipoles(``e`` and ``e'``), and the intersection of the epipolar plane and the two
+epipoles(**e** and **e'**), and the intersection of the epipolar plane and the two
 image planes are know as the epipolar lines(blue lines).
 
 Fundamental matrix is a 3x3 homogeneous matrix that encodes information about the
-camera matrices, relative translation and relative rotation between cameras thus
-allows us to use epipolar geometry to deduce relations between images pairs without 
-knowing all the constraints. In other words if we know the fundamental matrix, then 
-any point in one image allows us to calculate the epipolar line of the respective 
+camera matrices, relative translation and rotation between cameras, this allows us 
+to use epipolar geometry to deduce relations between images pairs without 
+knowing all the constraints. In other words if we know the fundamental matrix, any 
+point in one image allows us to calculate the epipolar line of the respective 
 point in the other image.
 
+Luckily for us, we do not acutally need to know the intrinsic and extrinsic camera 
+matrices nor the relative transformations between the cameras to calculate the
+fundamental matrix. We can simply estimate the fundamental matrix with 
+[Random sample consensus (RANSAC)](https://en.wikipedia.org/wiki/Random_sample_consensus).
 
+## Homography estimation and image stitching
+The final step in image stitching is finding the homography matrix. The homography matrix
+in essence allows an image to be transformed from one image plane to another. 
 
+To estimate the homography matrix we can again use RANSAC. 
+Estimating the homography matrix also serves a second purpose, if we see a 
+significant drop in the number of matches this would indicate that the images can 
+not be aligned accurately enought to form a good panoramic.
 
 
 
