@@ -230,7 +230,102 @@ norm2 = np.sqrt(np.linalg.inv(H)[-1,0]**2 + np.linalg.inv(H)[-1,1]**2)
 If norm-1 is larger than norm-2 we warp image 1 to image 2, if on the other hand 
 norm-2 is larger than norm-1 we warp image 2 to image 1.
 
+Once the anchor image has been determined we can calculate a translation matrix for
+the second image by using the homography matrix to remap the image corners.
 
+```python
+#remap corners to new frame
+def remap(x,y,z,w,H):
+    x_dot = np.dot(H,x)
+    y_dot = np.dot(H,y)
+    z_dot = np.dot(H,z)
+    w_dot = np.dot(H,w)
+    return x_dot/x_dot[-1], y_dot/y_dot[-1], z_dot/z_dot[-1], w_dot/w_dot[-1]
 
+#calculates the translation offset base on the corners
+#returns a compsite matrix
+def calcTranslation(img1, img2, H):
+    C1,C2,C3,C4 = remap(np.array([0,0,1]),np.array([img1.shape[1],img1.shape[0],1]),np.array([0,img1.shape[0],1]),np.array([img1.shape[1],0,1]),H)
+    minX = min([C1[0],C2[0],C3[0],C4[0]])
+    minY = min([C1[1],C2[1],C3[1],C4[1]])
+    osX = abs(minX) if minX < 0 else  0
+    osY = abs(minY) if minY < 0 else  0
+    matrix = np.array([ [1,0,osX],[0,1,osY],[0,0,1] ])
+    composite = np.dot(matrix, H)
+    return composite, osX, osY
+```
+Next to integrate both images together we need to calculate the new coordinates for both image 1 and image 2.
+```python
+def warp(composite, osx, osy, img1, img2):
+    #calculate new coordinates for image1 and image 2
+    img1_c1, img1_c2, img1_c3, img1_c4 = \
+        remap(np.array([0,0,1]),np.array([img1.shape[1],img1.shape[0],1]),np.array([0,img1.shape[0],1]),np.array([img1.shape[1],0 ,1]),composite)
+    img2_c1 = (osx, osy)
+    img2_c2 = (osx + img2.shape[1], osy + img2.shape[0])
+    img2_c3 = (osx, osy + img2.shape[0])
+    img2_c4 = (osx+img2.shape[1], osy)
+    #calculate size of new image
+    col = max([img1_c1[0], img1_c2[0], img1_c3[0], img1_c4[0],\
+            img2_c1[0], img2_c2[0], img2_c3[0], img2_c4[0] ]) 
+    row = max([img1_c1[1], img1_c2[1], img1_c3[1], img1_c4[1],\
+            img2_c1[1], img2_c2[1], img2_c3[1], img2_c4[1] ])
+    #print image size
+    r1 = cv2.warpPerspective(img1, composite, (int(col),int(row)), flags = cv2.INTER_LINEAR)
+    r2 = np.zeros(r1.shape, dtype = r1.dtype)
+    r2[int(osy):img2.shape[0]+int(osy), int(osx):img2.shape[1]+int(osx)] = img2
+    return r1, r2
+```
+
+### Image blending
+
+At this step we have the final canvas size of the panoramic and two images with its 
+coordinates remapped/wrapped. For regions that are not overlapping we can copy 
+directly from source image to the final canvas. For regions that are overlapping we
+can create a mask with its weight split 20/80.
+
+```python
+stitch = img1_canvas + img2_canvas
+overlap1 = np.copy(img1_canvas)
+overlap2 = np.copy(img2_canvas)
+overlap1[np.where(stitch ==2)] = 0.20
+overlap2[np.where(stitch ==2)] = 0.80
+fin_stitch = (r1*overlap1) + (r2*overlap2)
+fin_stitch = cv2.GaussianBlur(fin_stitch, (3,3), 2)
+cv2.imwrite(img_out, fin_stitch)
+```
+## Results
+
+Below are the two images that we wish to stitch together
+
+![original images](./image2-image3.png)
+
+Here are the keypoints detected after the inital FLANN matching
+
+![FLANN matching](./image2_image3_match_init.jpg)
+
+Inlier keypoints after Fundamental matrix estimation
+
+![Fundamental matrix estimation](./image2_image3_match_fund.jpg)
+
+Remaining keypoints after homography estimation
+
+![Homography matrix](./image2_image3_match_homo.jpg)
+
+Finally here are the two images stitched together along with the output log
+
+![Final image](./image2_image3.jpg)
+
+```
+Comparing image2.JPG and image3.JPG
+Matches found: 1287
+Inliers count after Fundamental estimate: 966
+Fundamental decision ---
+Matched scene: inlier threshold meet
+Inliers count after Homography estimate 397
+Homography decision ---
+image2_image3 Possible for alignment
+Alignment possible: combine images
+Warp Image 1 -> Image 2
+```
 
 
