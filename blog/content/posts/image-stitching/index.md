@@ -191,5 +191,46 @@ Estimating the homography matrix also serves a second purpose, if we see a
 significant drop in the number of matches this would indicate that the images can 
 not be aligned accurately enought to form a good panoramic.
 
+## CODE: Fundamental and Homography matrix
+
+```python
+# good: matched pairs from FLANN
+# pts1: matched point from image 1
+# pts2: matched point from image 2 
+
+def homoEst(pts1, pts2, good):
+    H, stat = cv2.findHomography(pts1, pts2, cv2.RANSAC, ransacReprojThreshold = 1.0, confidence = 0.99)
+    h_match = good[stat.ravel() == 1]
+    print("Inliers count after Homography estimate %d"%(h_match.shape[0]))
+    return H, h_match
+
+def fundEst(pts1, pts2, good):
+    FM, mask = cv2.findFundamentalMat(pts1, pts2, cv2.FM_RANSAC, 1.0, 0.99)
+    fm_match = good[mask.ravel() == 1]
+    print("Inliers count after Fundamental estimate: %d"%(fm_match.shape[0]))
+    return FM, fm_match
+```
+
+## Image stitching
+
+If we retain sufficent keypoint pairs after running through Homography estimation 
+and Fundamental matrix estimation, we can then begin image stitching.
+
+First step in the process is to determine an anchor image which will remain fixed,
+while the second image will be warped and mapped to the perspective of the anchor 
+image.
+
+To do this we can calculate the norm of the homography matrix. Note that norm-2 takes
+the inverse of the homography matrix this is due to the original homography matrix 
+being calculated from image 1 mapped to image 2.
+```python
+norm1 = np.sqrt(H[-1,0]**2 + H[-1,1]**2)
+norm2 = np.sqrt(np.linalg.inv(H)[-1,0]**2 + np.linalg.inv(H)[-1,1]**2)
+```
+If norm-1 is larger than norm-2 we warp image 1 to image 2, if on the other hand 
+norm-2 is larger than norm-1 we warp image 2 to image 1.
+
+
+
 
 
