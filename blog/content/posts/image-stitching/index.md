@@ -327,5 +327,3 @@ image2_image3 Possible for alignment
 Alignment possible: combine images
 Warp Image 1 -> Image 2
 ```
-
-
