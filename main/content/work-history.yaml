@@ -1,3 +1,12 @@
+- company: Guile Technologies
+  position: Software Engineer
+  period: September 2019 - Current
+  description: "
+  \u25CF Lead developer of smart barbell tracker, responsible for embedded hardware
+  design and companion app design (written in flutter)
+  
+  \u25CF Developed method to reliably calculate relative positions of sensors"
+
 - company: BD (Becton Dickinson)
   position: Embedded Software Intern
   period: September 2015 - July 2016
