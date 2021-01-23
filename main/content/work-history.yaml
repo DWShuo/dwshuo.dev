@@ -1,11 +1,11 @@
-- company: Guile Technologies
+- company: Metasoma Technologies
   position: Software Engineer
   period: September 2019 - Current
   description: "
   \u25CF Lead developer of smart barbell tracker, responsible for embedded hardware
   design and companion app design (written in flutter)
   
-  \u25CF Developed method to reliably calculate relative positions of sensors"
+  \u25CF Developed method to reliably calculate relative sensor positions and map the barbell to 3D space"
 
 - company: BD (Becton Dickinson)
   position: Embedded Software Intern
