@@ -2,10 +2,11 @@
   position: Software Engineer
   period: September 2019 - Current
   description: "
-  \u25CF Lead developer of smart barbell tracker, responsible for embedded hardware
-  design and companion app design (written in flutter)
-  
-  \u25CF Developed method to reliably calculate relative sensor positions and map the barbell to 3D space"
+  \u25CF Lead developer of smart barbell fitness tracker, responsible for embedded hardware design and companion app design (written in flutter).
+
+  \u25CF Hardware and companion app allows for tracking of barbell's path. Companion app offers suggestions on improvements to technique and form during lifts.
+
+  \u25CF Developed metho for reliable sensor position(relative) calculation and 3D mapping of barbell's path."
 
 - company: BD (Becton Dickinson)
   position: Embedded Software Intern
